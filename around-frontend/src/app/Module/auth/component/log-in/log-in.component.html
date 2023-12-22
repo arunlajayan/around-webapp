@@ -1,0 +1,94 @@
+<div class="top-mode">
+  <!-- login.component.html -->
+
+  <div
+    class="top-mode login-page__container d-flex align-items-center justify-content-center"
+  >
+    <div class="container my-2">
+      <div class="row">
+        <div class="col-12">
+          <main>
+            <div
+              class="card text-center login-page__card mx-auto py-3 position-relative"
+            >
+              <div class="card-body">
+                <div class="row mb-4">
+                  <div class="col-12 d-flex justify-content-center">
+                    <!-- You can add an image here if needed -->
+                  </div>
+                </div>
+                <form
+                  class="row justify-content-md-center"
+                  [formGroup]="signupForm"
+                  (ngSubmit)="login()"
+                >
+                  <div class="col-12 col-md-10">
+                    <div class="form-floating mb-3">
+                      <input
+                        class="form-control"
+                        id="floating-email"
+                        lowercase
+                        maxlength="150"
+                        placeholder="name@example.com"
+                        required
+                        trim
+                        type="email"
+                        formControlName="email"
+                      />
+                      <label class="text-start" for="floating-email">
+                        <i class="icon fa-solid fa-at me-1"></i>Email
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-10 mb-4">
+                    <div class="form-floating">
+                      <input
+                        autocomplete
+                        class="form-control"
+                        id="floating-password"
+                        minlength="8"
+                        placeholder="Password"
+                        required
+                        type="password"
+                        formControlName="password"
+                      />
+                      <label class="text-start" for="floating-password">
+                        <i class="icon fa-solid fa-lock me-1"></i>Password
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12 mb-4">
+                    <button
+                      class="btn btn-primary"
+                      [disabled]="!signupForm.valid"
+                      type="submit"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="spinner-border text-white spinner-border-sm me-1"
+                        role="status"
+                      ></span>
+                      Enter
+                    </button>
+                  </div>
+                  <div class="col-12">
+                    <p>
+                      <span i18n>don't have an account yet?</span>
+                      <a class="ms-1">
+                        <a href="/auth/register" class="ms-1">
+                          <ng-container i18n>register</ng-container>
+                          <i class="ms-1 icon fa-solid fa-right-long"></i>
+                        </a>
+                        <i class="ms-1 icon fa-solid fa-right-long"></i>
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

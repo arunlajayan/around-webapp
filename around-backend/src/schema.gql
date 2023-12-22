@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  username: String!
+  password: String!
+  email: String!
+}
+
+type UserResponse {
+  user: User!
+  token: String!
+}
+
+type Room {
+  id: String!
+  name: String!
+}
+
+type Query {
+  findRoom(id: String!): Room!
+  getMyRoomInfo: [Room!]!
+  getMyInfo: [User!]!
+  getInfoById(id: String!): User
+}
+
+type Mutation {
+  createRoom(room: createRoom!): Room!
+  createUser(user: createUser!): User!
+  login(auth: loginUser!): UserResponse!
+}
+
+input createRoom {
+  name: String!
+}
+
+input createUser {
+  username: String!
+  password: String!
+  email: String!
+}
+
+input loginUser {
+  email: String!
+  password: String!
+}

@@ -1,0 +1,87 @@
+Get by id
+query {
+    getInfoById(id: "yourUserId") {
+      username
+      password
+      email
+    }
+  }
+  Response
+{
+  "data": {
+    "getMyInfo": [
+      {
+        "username": "john_doe",
+        "email": "john.doe@example.com"
+      }
+    ]
+  }
+}
+
+get all data 
+query GetMyInfo {
+  getMyInfo {
+    username
+    email
+  }
+}
+Response
+{
+  "data": {
+    "getMyInfo": [
+      {
+        "username": "john_doe",
+        "email": "john.doe@example.com"
+      }
+    ]
+  }
+}
+create user
+mutation CreateUser($user: createUser!) {
+  createUser(user: $user) {
+    username
+    email
+  }
+}
+data
+{
+  "user": {
+    "username": "arun",
+    "password": "12341234",
+    "email": "arun@example.com"
+  }
+}
+Response
+{
+  "data": {
+    "createUser": {
+      "username": "arun",
+      "email": "arun@example.com"
+    }
+  }
+}
+login
+mutation LoginUser($auth: loginUser!) {
+  login(auth: $auth) {
+    user {
+      id
+      email
+      # Add other user fields as needed
+    }
+    token
+  }
+}
+
+////room
+mutation createRoom($room: createRoom!) {
+  createRoom(room: $room) {
+    name
+  }
+}
+get all room
+query getMyRoomInfo {
+  getMyRoomInfo{
+    id
+    name
+  }
+}
