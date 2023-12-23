@@ -9,6 +9,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { RoomModule } from './component/room/room.module';
 import { AppGateway } from './app.gateway';
+import { ChatModule } from './component/chat/chat.module';
+
 @Module({
   
   imports: [
@@ -28,8 +30,9 @@ import { AppGateway } from './app.gateway';
    
     ),
     RoomModule,
+    ChatModule,
     UserModule],
   controllers: [AppController],
-  providers: [AppService, AppGateway],
+  providers: [AppService],
 })
 export class AppModule {}

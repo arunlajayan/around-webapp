@@ -17,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
 import { DashboardMainComponent } from './Module/dashboard/component/dashboard-main/dashboard-main.component';
 import { ChatListComponent } from './Module/dashboard/component/chat-list/chat-list.component';
-
+import { HomeComponent } from './Module/dashboard/component/home/home.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'localhost:5000', options: {} };
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ChatListComponent } from './Module/dashboard/component/chat-list/chat-l
     LogInComponent,
     RegisterComponent,
     DashboardMainComponent,
-    ChatListComponent
+    ChatListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { ChatListComponent } from './Module/dashboard/component/chat-list/chat-l
     AppRoutingModule,
     HttpClientModule,
     GraphQLModule,
-    
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     AuthService,

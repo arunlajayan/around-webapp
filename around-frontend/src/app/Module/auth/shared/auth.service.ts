@@ -10,12 +10,13 @@ import { LogInResponse } from './interfaces/log-in-response.interface';
 import { Apollo } from 'apollo-angular';
 import { LOGIN_USER_MUTATION, USER_LOGIN, USER_REGISTER } from './interfaces/graphql/auth-mutations.graphql';
 import { LoginPayload } from './interfaces/login-payload.interface';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private apollo: Apollo) // private authRepository: AuthRepository,
+  constructor(private apollo: Apollo,private socket: Socket) // private authRepository: AuthRepository,
   {}
 
   createUser(user: RegisterPayload):Observable<AuthUserData>{
@@ -78,6 +79,14 @@ export class AuthService {
         return throwError(error);
       })
     );
+  }
+
+  createRoom(room: any): void {
+    this.socket.emit('createRoom', room, (response: { error: any; }) => {
+      if (response.error) {
+       console.log("res",response)
+      }
+    });
   }
 
 
