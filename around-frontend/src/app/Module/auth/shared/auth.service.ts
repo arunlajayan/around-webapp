@@ -89,5 +89,20 @@ export class AuthService {
     });
   }
 
-
+  connect(user:string,userID: string, roomId: string): void {
+    this.socket.emit('join', {name: user, roomId, user_id:userID});
+  }
+  send(msg: string, room_id: string): void {
+    const payload = {
+      name: 'John Doe',
+      user_id: '123456',
+      text: 'Hello, world!',
+      room_id: 'your_room_id'
+    };
+    this.socket.emit('sendMessage', payload);
+    this.socket.on('message', (message: any) => {
+      console.log('Received message:', message);
+      // Handle the received message here
+    });
+}
 }

@@ -19,6 +19,7 @@ import { DashboardMainComponent } from './Module/dashboard/component/dashboard-m
 import { ChatListComponent } from './Module/dashboard/component/chat-list/chat-list.component';
 import { HomeComponent } from './Module/dashboard/component/home/home.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ChatComponent } from './Module/dashboard/component/chat/chat.component';
 const config: SocketIoConfig = { url: 'localhost:5000', options: {} };
 
 @NgModule({
@@ -28,7 +29,8 @@ const config: SocketIoConfig = { url: 'localhost:5000', options: {} };
     RegisterComponent,
     DashboardMainComponent,
     ChatListComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

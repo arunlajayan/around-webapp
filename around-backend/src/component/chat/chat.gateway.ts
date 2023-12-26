@@ -43,8 +43,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @SubscribeMessage('sendMessage')
   async handleSendMessage(@ConnectedSocket() client: Socket, payload: { name: string; user_id: string; text: string; room_id: string }): Promise<void> {
-    console.log('message')
     const { name, user_id, text, room_id } = payload;
+  
+    console.log('Received sendMessage payload:', payload);
+  
     const message = await this.messageService.createMessage({ name, user_id, text, room_id });
     client.to(room_id).emit('message', message);
   }

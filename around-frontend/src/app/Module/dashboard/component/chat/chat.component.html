@@ -1,1 +1,11 @@
-<p>chat works!</p>
+<div class="outerContainer">
+    <div class="container">
+        <form action="" class="form" [formGroup]="newMessage" (ngSubmit)="sendMessage()">
+            <input type="text" class="input"
+                placeholder="Type a message"
+                formControlName="name"
+            />
+            <button class="sendButton" [disabled]="!newMessage.valid">Send Message</button>
+        </form>
+    </div>
+</div>

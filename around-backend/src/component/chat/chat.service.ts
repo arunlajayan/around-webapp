@@ -10,7 +10,8 @@ export class ChatService {
     private users: User[] = [];
     constructor(@InjectModel('Chat') private readonly messageModel: Model<Chat>) {}
     async createMessage(data: { name: string; user_id: string; text: string; room_id: string }): Promise<Chat> {
-        const createdMessage = new this.messageModel(data);
+        console.log(data)
+      const createdMessage = new this.messageModel(data);
         return createdMessage.save();
       }
     
