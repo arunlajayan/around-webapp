@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Module/auth/shared/auth.service';
-
+import { Location } from '@angular/common';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -9,21 +11,38 @@ import { AuthService } from 'src/app/Module/auth/shared/auth.service';
 })
 export class ChatComponent implements OnInit{
   newMessage: FormGroup;
+  messages: any[] = [];
+  room_id: string = 'your_room_id';
+  public currentUrl = ''
+  public urlParts = ''
   constructor(
-    private fb: FormBuilder, private auth: AuthService) {
+    private socket: Socket,
+    private fb: FormBuilder, private location: Location, private auth: AuthService, private router: Router) {
       this.newMessage = this.fb.group({
         name: ['', [Validators.required]],
       });
   }
+  
   ngOnInit(): void {
-    this.auth.connect("arun","65846348c4948fc3cf4c94ed","65813878841fbd7b3920041e")
+    
+    this.currentUrl = this.location.path();
+    this.urlParts = this.currentUrl.split('/')[2];
+    this.socket.emit('getMessagesHistory', this.urlParts);
+
+    this.socket.on('output-messages', (messages: any[]) => {
+      this.messages = messages;
+      console.log("message",messages)
+    });
+    const username: any = localStorage.getItem("username")
+    const id: any = localStorage.getItem("id")
+    this.auth.connect(username,id, this.urlParts)
   }
   sendMessage() {
     if (this.newMessage.valid) {
       const msg = this.newMessage.value;
 
       try {
-        this.auth.send(msg,"65846348c4948fc3cf4c94ed")
+        this.auth.send(msg.name,this.urlParts)
       } catch (error) {
         
       }

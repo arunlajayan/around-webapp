@@ -15,6 +15,7 @@ export class HomeComponent  {
   roomForm: FormGroup;
 
   constructor(private fb: FormBuilder, private roomService: AuthService) {
+    console.log(roomService.username)
     this.roomForm = this.fb.group({
       name: ['', [Validators.required]],
     });
@@ -25,16 +26,10 @@ export class HomeComponent  {
       const room = this.roomForm.value;
 
       try {
-        // Call the room service to create the room
         const createdRoom = await this.roomService.createRoom(room);
-
-        // Handle success: Room created successfully
         console.log('Room created:', createdRoom);
-        // You can perform additional actions or navigate to a different page
       } catch (error) {
-        // Handle error: Something went wrong during room creation
         console.error('Error creating room:', error);
-        // You can show an error message or perform other error-handling actions
       }
     }
   }

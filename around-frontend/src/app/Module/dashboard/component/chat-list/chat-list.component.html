@@ -3,8 +3,7 @@
     <h4>Room List</h4>
 </div>
 <div *ngFor="let room of rooms">
-   
-    <div [ngStyle]="{'margin': '23px'}">
-     {{ room.name }}
+    <div [ngStyle]="{'margin': '23px'}" (click)="navigateToChat(room.id, room.name)">
+      <a>{{ room.name }}</a>
     </div>
   </div>

@@ -15,7 +15,7 @@ const routes: Routes = [
       component:HomeComponent 
   },
   {
-    path: 'chat/:room_id/:room_name',
+    path: ':room_id/:room_name',
     component:ChatComponent 
 },
 
