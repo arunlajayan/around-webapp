@@ -41,7 +41,7 @@
     flex-direction: column;
     justify-content: space-between;
     background: #ffffff;
-  
+    overflow: scroll;
     border-radius: 8px;
     height: 70%;
     width: 65%;

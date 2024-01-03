@@ -1,0 +1,7 @@
+<div [ngClass]="{'row right-align': isCurrentUser, 'row left-align': !isCurrentUser}">
+    <div class="col s12 m8 l6" [ngClass]="{'right': isCurrentUser, 'left': !isCurrentUser}">
+      <p [ngClass]="{'sentbyme': isCurrentUser, 'opponent': !isCurrentUser}">
+        {{ message.name }}: {{ message.text }}
+      </p>
+    </div>
+  </div>

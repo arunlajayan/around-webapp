@@ -1,5 +1,7 @@
 <div class="outerContainer">
+ 
     <div class="container">
+        <div><app-messages *ngFor="let message of messages" [message]="message"></app-messages></div>
         <form action="" class="form" [formGroup]="newMessage" (ngSubmit)="sendMessage()">
             <input type="text" class="input"
                 placeholder="Type a message"

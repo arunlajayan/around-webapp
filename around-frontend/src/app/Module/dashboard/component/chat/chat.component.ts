@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Module/auth/shared/auth.service';
@@ -11,7 +11,7 @@ import { Socket } from 'ngx-socket-io';
 })
 export class ChatComponent implements OnInit{
   newMessage: FormGroup;
-  messages: any[] = [];
+  @Input() messages:  any[] = [];
   room_id: string = 'your_room_id';
   public currentUrl = ''
   public urlParts = ''
