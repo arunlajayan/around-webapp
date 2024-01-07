@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 @Schema({timestamps : true})
 class Room {
-  @Prop()
+  @Prop({unique: true})
   name: string;
 
 
